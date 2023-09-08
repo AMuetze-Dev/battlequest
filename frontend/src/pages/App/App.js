@@ -3,7 +3,6 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { useToken } from "../../hooks/useLocalStorage";
 import "react-toastify/dist/ReactToastify.css";
 
-import ParticlesContainer from "../../components/ui/ParticlesContainer";
 import Login from "../Login/Login";
 import { Chat } from "../../features/chat/index";
 import LobbySelector from "../LobbySelector/LobbySelector";
@@ -15,7 +14,6 @@ export default function App() {
 
     return (
         <React.Fragment>
-            <ParticlesContainer />
             <BrowserRouter>
                 {!token ?
                     <Login setToken={setToken} />

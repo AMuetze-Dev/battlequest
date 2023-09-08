@@ -38,8 +38,8 @@ export default function LoginForm() {
         <form className={style["login-form"]} onSubmit={handleSubmit}>
             <input type="text" placeholder="Username" autoComplete="username" onChange={e => setUsername(e.target.value)} />
             <input type="password" placeholder="Passwort" autoComplete="current-password" onChange={e => setPassword(e.target.value)} />
-            <button type="submit" className="dark">Submit</button>
-            <button type="button" onClick={onClickCreate} className="dark">Create</button>
+            <button type="submit">Submit</button>
+            <button type="button" onClick={onClickCreate} className="outlined">Create</button>
         </form>
     )
 }
