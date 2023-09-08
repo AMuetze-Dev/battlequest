@@ -5,8 +5,7 @@
     transform: translate(-50%, -50%);
 
     padding: 45px;
-    background-color: rgba(var(--primary-dark), 0.7);
-    border: 2px solid var(--secondary-dark-color);
+    background-color: var(--secondary-color);
     border-radius: 20px;
 
     display: flex;
