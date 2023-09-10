@@ -29,6 +29,11 @@ public class LobbyService {
 		return new ResponseEntity<>("Lobby wurde angelegt", HttpStatus.CREATED);
 	}
 
+	public ResponseEntity<String> createUser(Lobby lobby, User user) {
+		// TODO
+		return null;
+	}
+
 	public ResponseEntity<String> delete(Lobby lobby) {
 		try {
 			if (lobby == null) return new LobbyNotFoundException().getResponseEntity();

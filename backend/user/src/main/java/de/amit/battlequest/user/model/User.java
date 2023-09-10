@@ -11,8 +11,8 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.JoinColumns;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Transient;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -35,9 +35,15 @@ public class User {
 	@Column(length = 32)
 	private String	password;
 
+	@Transient
 	@ManyToOne
-	@JoinColumns({ @JoinColumn(name = "lobby_code", referencedColumnName = "code"), @JoinColumn(name = "moderator_id", referencedColumnName = "moderator_id") })
+	@JoinColumn(name = "lobby_code")
 	private Lobby	lobby;
+
+	@Transient
+	@ManyToOne
+	@JoinColumn(name = "team_uuid")
+	private Team	team;
 
 	public User(String username, String password) {
 		this.username = username;
@@ -50,6 +56,9 @@ public class User {
 
 	@JsonIgnore
 	public String getPassword() { return password; }
+
+	@JsonIgnore
+	public Team getTeam() { return team; }
 
 	@JsonIgnore
 	public String getUsername() { return username; }

@@ -11,24 +11,28 @@ import lombok.Setter;
 
 @Getter
 @Setter
-@Entity
-public class UserLobby {
+@Entity(name = "lobbies_users")
+public class LobbyUsers {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long	id;
 
 	@ManyToOne
-	@JoinColumn(name = "user_id")
+	@JoinColumn(name = "user_uuid")
 	private User	user;
 
 	@ManyToOne
 	@JoinColumn(name = "lobby_code")
 	private Lobby	lobby;
 
+	@ManyToOne
+	@JoinColumn(name = "team_uuid")
+	private Team	team;
+
 	private int		points;
 
-	public UserLobby(User user, Lobby lobby) {
+	public LobbyUsers(User user, Lobby lobby) {
 		this.user = user;
 		this.lobby = lobby;
 		points = 0;

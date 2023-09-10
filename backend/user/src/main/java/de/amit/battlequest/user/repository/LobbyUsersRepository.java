@@ -4,9 +4,9 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import de.amit.battlequest.user.model.Lobby;
 import de.amit.battlequest.user.model.User;
-import de.amit.battlequest.user.model.UserLobby;
+import de.amit.battlequest.user.model.LobbyUsers;
 
-public interface UserLobbyRepository extends JpaRepository<UserLobby, Long> {
+public interface LobbyUsersRepository extends JpaRepository<LobbyUsers, Long> {
 
-	UserLobby findByUserAndLobby(User user, Lobby lobby);
+	LobbyUsers findByUserAndLobby(User user, Lobby lobby);
 }

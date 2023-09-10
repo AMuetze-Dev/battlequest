@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.RestController;
 import de.amit.battlequest.user.model.Lobby;
 import de.amit.battlequest.user.model.User;
 import de.amit.battlequest.user.service.lobby.LobbyService;
+import de.amit.battlequest.user.service.lobbyusers.PointService;
 import de.amit.battlequest.user.service.user.UserService;
-import de.amit.battlequest.user.service.userlobby.PointService;
 
 @RestController
 @RequestMapping("/lobby/{code}/player/{uuid}/points")

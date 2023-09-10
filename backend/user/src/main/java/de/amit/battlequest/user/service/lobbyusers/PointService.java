@@ -1,4 +1,4 @@
-package de.amit.battlequest.user.service.userlobby;
+package de.amit.battlequest.user.service.lobbyusers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -10,14 +10,14 @@ import de.amit.battlequest.user.exception.LobbyNotFoundException;
 import de.amit.battlequest.user.exception.UserNotFoundException;
 import de.amit.battlequest.user.model.Lobby;
 import de.amit.battlequest.user.model.User;
-import de.amit.battlequest.user.model.UserLobby;
-import de.amit.battlequest.user.repository.UserLobbyRepository;
+import de.amit.battlequest.user.model.LobbyUsers;
+import de.amit.battlequest.user.repository.LobbyUsersRepository;
 
 @Service
 public class PointService {
 
 	@Autowired
-	UserLobbyRepository userLobbyRepository;
+	LobbyUsersRepository userLobbyRepository;
 
 	public ResponseEntity<String> decrease(Lobby lobby, User user) {
 		return set(lobby, user, getUserLobby(lobby, user).getPoints() - 1);
@@ -27,7 +27,7 @@ public class PointService {
 		return set(lobby, user, getUserLobby(lobby, user).getPoints() - delta);
 	}
 
-	private UserLobby getUserLobby(Lobby lobby, User user) {
+	private LobbyUsers getUserLobby(Lobby lobby, User user) {
 		return userLobbyRepository.findByUserAndLobby(user, lobby);
 	}
 
@@ -50,7 +50,7 @@ public class PointService {
 
 	public ResponseEntity<String> set(Lobby lobby, User user, int value) {
 		testLobbyAndUser(lobby, user);
-		final UserLobby userLobby = getUserLobby(lobby, user);
+		final LobbyUsers userLobby = getUserLobby(lobby, user);
 		if (value < 0) value = 0;
 		if (value == userLobby.getPoints()) return new ResponseEntity<>("Punkte wurden nicht verändert", HttpStatus.NOT_MODIFIED);
 		userLobby.setPoints(value);

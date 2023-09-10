@@ -4,13 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.JoinColumns;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
@@ -22,15 +21,19 @@ import lombok.Setter;
 public class Lobby {
 
 	@Id
-	@Column(length = 8)
 	private String		code;
+
 	@ManyToOne
 	@JoinColumn(name = "moderator_id")
 	private User		moderator;
 
-	@OneToMany
-	@JoinColumns({ @JoinColumn(name = "lobby_code", referencedColumnName = "code"), @JoinColumn(name = "moderator_id", referencedColumnName = "moderator_id") })
+	@ManyToMany
+	@JoinTable(name = "lobbies_users", joinColumns = @JoinColumn(name = "lobby_code"), inverseJoinColumns = @JoinColumn(name = "user_uuid"))
 	private List<User>	users	= new ArrayList<>();
+
+	@ManyToMany
+	@JoinTable(name = "lobbies_users", joinColumns = @JoinColumn(name = "lobby_code"), inverseJoinColumns = @JoinColumn(name = "team_uuid"))
+	private List<Team>	teams	= new ArrayList<>();
 
 	public Lobby() {
 		code = UUID.randomUUID().toString().toUpperCase().substring(0, 8);

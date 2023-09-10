@@ -13,9 +13,9 @@
 	<url>aaronmuetze.ddns.net</url>
 
 	<modules>
-		<module>user</module>
-		<module>login</module>
+		<!-- <module>user</module> -->
 		<module>chat</module>
+		<module>user</module>
 	</modules>
 
 	<properties>
