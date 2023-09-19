@@ -1,4 +1,5 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+.idea
 
 # dependencies
 /frontend/node_modules
@@ -29,7 +30,7 @@ yarn-error.log*
 
 
 
-/backend/target/*
+/backend/*/target
 pom.xml.tag
 pom.xml.releaseBackup
 pom.xml.versionsBackup
