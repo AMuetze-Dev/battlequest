@@ -8,7 +8,7 @@ export default function useHashedLocalStorage(key, salt, transformValue = value 
     }
 
     const getValue = () => {
-        const itemString = localStorage.getItem(key);
+        const itemString = sessionStorage.getItem(key);
         const item = JSON.parse(itemString);
         return item;
     }
@@ -22,12 +22,12 @@ export default function useHashedLocalStorage(key, salt, transformValue = value 
         }
         const transformedValue = transformValue(value);
         const hashedValue = hashValue(transformedValue);
-        localStorage.setItem(key, JSON.stringify(hashedValue));
+        sessionStorage.setItem(key, JSON.stringify(hashedValue));
         setStoredValue(hashedValue);
     }
 
     const removeValue = () => {
-        localStorage.removeItem(key);
+        sessionStorage.removeItem(key);
         setStoredValue(undefined);
     }
 

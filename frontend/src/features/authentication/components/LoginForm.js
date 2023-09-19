@@ -2,18 +2,16 @@ import useAuthenticationState from "../hooks/useAuthenticationState";
 import { handleLogin } from "../hooks/useLogin";
 import PropTypes from "prop-types";
 
-import { useToken } from "../../../hooks/useLocalStorage";
-import { useUsername, usePassword } from "../../../hooks/useHashedLocalStorage";
+import { useUsername, usePassword } from "../../../hooks/useHashedSessionStorage";
 
 import style from "./LoginForm.module.css"
 
-export default function LoginForm() {
+export default function LoginForm({setToken}) {
 
     const { username, password, setUsername, setPassword } = useAuthenticationState();
 
     const { hashUsername, setUsername: setHashedUsername } = useUsername();
     const { hashPassword, setPassword: setHashedPassword } = usePassword();
-    const { setToken } = useToken();
 
     const handleSubmit = e => {
         e.preventDefault();

@@ -84,7 +84,7 @@ button,
 input {
   padding: 12px 25px;
   border: none;
-  border-radius: 20px;
+  border-radius: 10px;
   border: 2px solid var(--tertiary-color);
 }
 
@@ -95,7 +95,7 @@ button {
   cursor: pointer;
 
   background-color: var(--tertiary-color);
-  color: white;
+  color: var(--secondary-color);
 }
 
 button.outlined {
@@ -135,7 +135,7 @@ input:hover::placeholder {
 }
 
 ::-webkit-scrollbar-track {
-  background-color: #111;
+  background-color: var(--secondary-color);
 }
 
 ::-webkit-scrollbar {

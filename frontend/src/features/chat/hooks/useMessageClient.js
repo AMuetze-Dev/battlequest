@@ -43,13 +43,13 @@ export default function useMessageClient({ token }) {
 
     const sendPublicMessage = () => {
         var chatMessage = { senderName: player.nickname, message: userData.message, status: "MESSAGE" };
-        send("/app/public-message", chatMessage);
+        send("/public-message", chatMessage);
         setUserData({ ...userData, "message": "" });
     }
 
     const sendTeamMessage = () => {
         var chatMessage = { senderName: player.nickname, receiverTeamId: userData.teamId, message: userData.message, status: "MESSAGE" };
-        send("/app/team-message", chatMessage);
+        send("/team-message", chatMessage);
         setUserData({ ...userData, "message": "" });
     }
 
@@ -76,9 +76,8 @@ export default function useMessageClient({ token }) {
     }
 
     const onUserJoin = (nickname) => {
-        console.log("NICKNAME", nickname);
         var chatMessage = { senderName: nickname, status: "JOIN" };
-        send("/app/public-message", chatMessage);
+        send("/public-message", chatMessage);
     }
 
     return { showChat, isTeamMessage, setIsTeamMessage, publicChats, teamChats, userData, toggleChat, handleMessage, handleKeyDown, toggleChatDestination };

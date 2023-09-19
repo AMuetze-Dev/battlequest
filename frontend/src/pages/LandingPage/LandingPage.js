@@ -1,9 +1,7 @@
-import { useEffect, useState } from "react";
-import { toast } from "react-toastify";
-
 import { NicknameForm } from "../../features/nickname/index";
+import { LobbySelector } from "../../features/lobbyselector";
 
-import style from "./LobbySelector.module.css"
+import style from "./LandingPage.module.css"
 
 export default function Dashboard() {
 
@@ -11,6 +9,7 @@ export default function Dashboard() {
         <>
             <h2>LobbySelector</h2>
             <NicknameForm />
+            <LobbySelector />
         </>
     )
 }

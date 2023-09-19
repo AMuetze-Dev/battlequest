@@ -7,6 +7,22 @@
     grid-template-columns: 1fr 3fr 1fr;
 }
 
+.nickname-form button:first-child {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.nickname-form input {
+    border-radius: 0;
+    border-left: none;
+    border-right: none;
+}
+
+.nickname-form button:last-child {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
 @media screen and (max-width: 800px) {
     .nickname-form {
         grid-template-columns: 1fr 2fr 1fr;

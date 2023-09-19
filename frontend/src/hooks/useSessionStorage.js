@@ -1,9 +1,9 @@
 import { useState } from "react";
 
-export default function useLocalStorage(key, transformValue = value => value) {
+export default function useSessionStorage(key, transformValue = value => value) {
 
     const getValue = () => {
-        const itemString = localStorage.getItem(key);
+        const itemString = sessionStorage.getItem(key);
         const item = JSON.parse(itemString);
         return transformValue(item);
     }
@@ -16,12 +16,12 @@ export default function useLocalStorage(key, transformValue = value => value) {
             return;
         }
         const transformedValue = transformValue(value);
-        localStorage.setItem(key, JSON.stringify(transformedValue));
-        setStoredValue(transformValue);
+        sessionStorage.setItem(key, JSON.stringify(transformedValue));
+        setStoredValue(transformedValue);
     }
 
     const removeValue = () => {
-        localStorage.removeItem(key);
+        sessionStorage.removeItem(key);
         setStoredValue(undefined);
     }
 
@@ -33,7 +33,7 @@ export default function useLocalStorage(key, transformValue = value => value) {
 }
 
 export function useToken() {
-    const { value: token, setValue: setToken, removeValue: removeToken } = useLocalStorage("token");
+    const { setValue: setToken, value: token, removeValue: removeToken } = useSessionStorage("token");
 
     return {
         token,

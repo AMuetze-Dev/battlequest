@@ -2,26 +2,23 @@
     margin: 0 auto;
     max-width: 800px;
 
-    background-color: rgba(var(--secondary), 0.7);
-    border: 2px solid var(--tertiary-color);
-    border-radius: 10px;
+    background-color: rgba(var(--primary), 0.7);
+    border: 2px solid rgba(var(--secondary), 0.5);
+    border-bottom: none;
 }
 
 .toolbar {
     width: 100%;
     padding: 5px 20px;
-    background-color: var(--tertiary-color);
-    font-weight: bold;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    color: var(--secondary-color);
+    background-color: rgba(var(--secondary), 0.5);
 }
 
 .chat {
     display: flex;
     justify-content: flex-end;
-    align-items: flex-start;
+    align-items: center;
     flex-direction: column;
+
     overflow: hidden;
     height: 0;
     transition: height 0.3s ease-in-out;
@@ -49,13 +46,10 @@
     padding: 0 10px;
     width: 35%;
     max-width: 105px;
-    border-radius: 0 0 0 0;
 }
 
 .chat .input-container input {
-    width: 100%;
-    border-radius: 0 0 0 0;
-    border-bottom-color: transparent;
-    border-right: transparent;
+    width: 65%;
+    border-bottom: none;
     padding: 12px 10px;
 }
