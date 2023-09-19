@@ -45,11 +45,9 @@ public class UserServiceTest {
 	void testCreate() {
 		assertResponseEntity(userService.create("", "test1234"), HttpStatus.BAD_REQUEST, "Username darf nicht leer sein");
 		assertResponseEntity(userService.create(null, "test1234"), HttpStatus.BAD_REQUEST, "Username darf nicht leer sein");
-		assertResponseEntity(userService.create("abcdefghijklmnopqrstuvwxyzabcdefg", "test1234"), HttpStatus.BAD_REQUEST, "Username darf maximal 32 Zeichen haben");
 
 		assertResponseEntity(userService.create("testUser", ""), HttpStatus.BAD_REQUEST, "Passwort darf nicht leer sein");
 		assertResponseEntity(userService.create("testUser", null), HttpStatus.BAD_REQUEST, "Passwort darf nicht leer sein");
-		assertResponseEntity(userService.create("testUser", "abcdefghijklmnopqrstuvwxyzabcdefg"), HttpStatus.BAD_REQUEST, "Passwort darf maximal 32 Zeichen haben");
 
 		assertResponseEntity(userService.create("testUser", "test123"), HttpStatus.BAD_REQUEST, "Passwort muss mindestens als 8 Zeichen haben");
 

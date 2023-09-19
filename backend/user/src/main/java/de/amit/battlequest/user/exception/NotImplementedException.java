@@ -2,9 +2,12 @@ package de.amit.battlequest.user.exception;
 
 import org.springframework.http.HttpStatus;
 
+import java.io.Serial;
+
 public class NotImplementedException extends HttpException {
 
-	private static final long serialVersionUID = -8650830134636047866L;
+	@Serial
+	private static final long serialVersionUID = 1;
 
 	public NotImplementedException() {
 		super("Diese Funktion wurde nicht implementiert", HttpStatus.NOT_IMPLEMENTED);

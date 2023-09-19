@@ -19,10 +19,8 @@ public class UserService {
 	UserRepository userRepository;
 
 	public ResponseEntity<String> create(String username, String password) {
-		if (username == null || username.equals("")) return new ResponseEntity<>("Username darf nicht leer sein", HttpStatus.BAD_REQUEST);
-		if (username.length() > 32) return new ResponseEntity<>("Username darf maximal 32 Zeichen haben", HttpStatus.BAD_REQUEST);
-		if (password == null || password.equals("")) return new ResponseEntity<>("Passwort darf nicht leer sein", HttpStatus.BAD_REQUEST);
-		if (password.length() > 32) return new ResponseEntity<>("Passwort darf maximal 32 Zeichen haben", HttpStatus.BAD_REQUEST);
+		if (username == null || username.isEmpty()) return new ResponseEntity<>("Username darf nicht leer sein", HttpStatus.BAD_REQUEST);
+		if (password == null || password.isEmpty()) return new ResponseEntity<>("Passwort darf nicht leer sein", HttpStatus.BAD_REQUEST);
 		if (password.length() < 8) return new ResponseEntity<>("Passwort muss mindestens als 8 Zeichen haben", HttpStatus.BAD_REQUEST);
 		userRepository.save(new User(username, password));
 		return new ResponseEntity<>("Spieler wurde angelegt", HttpStatus.CREATED);

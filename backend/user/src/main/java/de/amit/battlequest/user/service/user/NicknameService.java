@@ -14,6 +14,7 @@ import de.amit.battlequest.user.repository.UserRepository;
 @Service
 public class NicknameService {
 
+	@Autowired
 	UserService		userService;
 	@Autowired
 	UserRepository	userRepository;

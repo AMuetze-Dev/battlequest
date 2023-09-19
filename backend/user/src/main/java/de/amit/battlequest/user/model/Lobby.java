@@ -28,11 +28,11 @@ public class Lobby {
 	private User		moderator;
 
 	@ManyToMany
-	@JoinTable(name = "lobbies_users", joinColumns = @JoinColumn(name = "lobby_code"), inverseJoinColumns = @JoinColumn(name = "user_uuid"))
+	@JoinTable(name = "lobby_users", joinColumns = @JoinColumn(name = "lobby_code"), inverseJoinColumns = @JoinColumn(name = "user_uuid"))
 	private List<User>	users	= new ArrayList<>();
 
 	@ManyToMany
-	@JoinTable(name = "lobbies_users", joinColumns = @JoinColumn(name = "lobby_code"), inverseJoinColumns = @JoinColumn(name = "team_uuid"))
+	@JoinTable(name = "lobby_users", joinColumns = @JoinColumn(name = "lobby_code"), inverseJoinColumns = @JoinColumn(name = "team_uuid"))
 	private List<Team>	teams	= new ArrayList<>();
 
 	public Lobby() {

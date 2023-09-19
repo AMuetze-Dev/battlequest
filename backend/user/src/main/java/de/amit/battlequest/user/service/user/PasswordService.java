@@ -15,6 +15,7 @@ import de.amit.battlequest.user.repository.UserRepository;
 @Service
 public class PasswordService {
 
+	@Autowired
 	UserService		userService;
 	@Autowired
 	UserRepository	userRepository;

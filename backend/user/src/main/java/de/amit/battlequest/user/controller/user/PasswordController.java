@@ -2,6 +2,7 @@ package de.amit.battlequest.user.controller.user;
 
 import java.util.UUID;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,8 +18,9 @@ import de.amit.battlequest.user.service.user.UserService;
 
 @RestController
 public class PasswordController {
-
+	@Autowired
 	UserService		userService;
+	@Autowired
 	PasswordService	passwordService;
 
 	@PutMapping("/player/{uuid}/password")

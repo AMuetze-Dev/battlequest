@@ -2,6 +2,8 @@ package de.amit.battlequest.user.controller.user;
 
 import java.util.UUID;
 
+import de.amit.battlequest.user.exception.HttpException;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,6 +21,7 @@ import de.amit.battlequest.user.service.user.UserService;
 @RequestMapping("/player")
 public class UserController {
 
+	@Autowired
 	UserService userService;
 
 	@PostMapping
@@ -33,6 +36,10 @@ public class UserController {
 
 	@GetMapping("/{uuid}")
 	public User read(@PathVariable UUID uuid) {
-		return userService.read(uuid);
+		try {
+			return userService.read(uuid);
+		} catch(HttpException e) {
+			return null;
+		}
 	}
 }

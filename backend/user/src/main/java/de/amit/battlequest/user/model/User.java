@@ -5,14 +5,7 @@ import java.util.UUID;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Transient;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -28,11 +21,11 @@ public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.UUID)
 	private UUID	uuid	= UUID.randomUUID();
-	@Column(length = 32)
+	@Column(columnDefinition = "text")
 	private String	username;
 	@Column(length = 32)
 	private String	nickname;
-	@Column(length = 32)
+	@Column(columnDefinition = "text")
 	private String	password;
 
 	@Transient

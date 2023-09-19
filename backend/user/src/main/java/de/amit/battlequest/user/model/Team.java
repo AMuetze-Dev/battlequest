@@ -43,7 +43,7 @@ public class Team {
 	private Lobby		lobby;
 
 	@ManyToMany
-	@JoinTable(name = "lobbies_users", joinColumns = @JoinColumn(name = "team_uuid"), inverseJoinColumns = @JoinColumn(name = "user_uuid"))
+	@JoinTable(name = "lobby_users", joinColumns = @JoinColumn(name = "team_uuid"), inverseJoinColumns = @JoinColumn(name = "user_uuid"))
 	private List<User>	users	= new ArrayList<>();
 
 	public void addUser(User user) {

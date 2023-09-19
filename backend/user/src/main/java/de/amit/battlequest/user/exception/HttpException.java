@@ -5,10 +5,13 @@ import org.springframework.http.ResponseEntity;
 
 import lombok.Getter;
 
+import java.io.Serial;
+
 @Getter
 public class HttpException extends RuntimeException {
 
-	private static final long	serialVersionUID	= 8403690835422617844L;
+	@Serial
+	private static final long	serialVersionUID	= 1;
 	private final HttpStatus	httpStatus;
 
 	public HttpException(String message, HttpStatus httpStatus) {

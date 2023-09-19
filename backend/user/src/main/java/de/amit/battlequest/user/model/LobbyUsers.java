@@ -11,7 +11,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-@Entity(name = "lobbies_users")
+@Entity(name = "lobby_users")
 public class LobbyUsers {
 
 	@Id

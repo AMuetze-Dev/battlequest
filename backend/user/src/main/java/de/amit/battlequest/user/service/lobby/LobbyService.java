@@ -1,6 +1,7 @@
 package de.amit.battlequest.user.service.lobby;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,7 @@ import de.amit.battlequest.user.exception.LobbyNotFoundException;
 import de.amit.battlequest.user.exception.NotImplementedException;
 import de.amit.battlequest.user.exception.UserNotFoundException;
 import de.amit.battlequest.user.model.Lobby;
+import de.amit.battlequest.user.model.Team;
 import de.amit.battlequest.user.model.User;
 import de.amit.battlequest.user.repository.LobbyRepository;
 
@@ -24,14 +26,22 @@ public class LobbyService {
 
 	public ResponseEntity<String> create() {
 		final Lobby lobby = new Lobby();
-		while (lobbyRepository.findById(lobby.getCode()) != null) lobby.setCode(generateCode());
+		while (!lobbyRepository.findById(lobby.getCode()).equals(Optional.empty())) lobby.setCode(generateCode());
 		lobbyRepository.save(lobby);
 		return new ResponseEntity<>("Lobby wurde angelegt", HttpStatus.CREATED);
 	}
 
 	public ResponseEntity<String> createUser(Lobby lobby, User user) {
-		// TODO
-		return null;
+		try {
+			if (lobby == null) return new LobbyNotFoundException().getResponseEntity();
+			if (user == null) return new UserNotFoundException().getResponseEntity();
+			if (lobby.getCode().equals(user.getLobby().getCode())) return new ResponseEntity<>("Spieler gehört bereits der Lobby an", HttpStatus.BAD_REQUEST);
+			lobby.getUsers().add(user);
+			lobbyRepository.save(lobby);
+			return new ResponseEntity<>("Spieler wurde hinzugefügt", HttpStatus.OK);
+		} catch (final HttpException e) {
+			return e.getResponseEntity();
+		}
 	}
 
 	public ResponseEntity<String> delete(Lobby lobby) {
@@ -67,6 +77,14 @@ public class LobbyService {
 
 	public List<Lobby> readAll() {
 		return lobbyRepository.findAll();
+	}
+
+	public List<Team> readAllTeam(Lobby lobby) {
+		return lobby.getTeams();
+	}
+
+	public List<User> readAllUser(Lobby lobby) {
+		return lobby.getUsers();
 	}
 
 	public ResponseEntity<String> update() {

@@ -2,6 +2,7 @@ package de.amit.battlequest.user.controller.lobby;
 
 import java.util.UUID;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,9 +19,11 @@ import de.amit.battlequest.user.service.user.UserService;
 @RestController
 @RequestMapping("/lobby/{code}/player/{uuid}/points")
 public class PointController {
-
+	@Autowired
 	PointService	pointService;
+	@Autowired
 	LobbyService	lobbyService;
+	@Autowired
 	UserService		userService;
 
 	@PutMapping("/decrease")
